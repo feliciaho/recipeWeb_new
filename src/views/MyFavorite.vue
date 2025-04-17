@@ -1,12 +1,8 @@
 <script>
-import TheWelcome from '@/components/TheWelcome.vue';
-export default {
-  components:{ TheWelcome },
-}
 </script>
 
 <template>
-  <main>
-    <TheWelcome />
-  </main>
+  <section>
+    <h1 class="secTitle">My Favorite</h1>
+  </section>
 </template>

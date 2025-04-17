@@ -12,7 +12,6 @@ export default defineStore('recipeStore', {
         const response = await axios.get(url)
         console.log('success')
         this.recipes = response.data.recipes
-        console.log(response.data.recipes)
       } catch (error) {
         console.error('error', error)
       }

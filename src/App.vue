@@ -2,21 +2,20 @@
 //app.vue
 import { RouterView } from 'vue-router'
 import NavBar from './components/NavBar.vue'
-import Footer from './components/Footer.vue';
+import FooterCom from './components/FooterCom.vue';
 export default {
   components: {
     NavBar,
-    Footer,
-    RouterView
+    FooterCom,
+    RouterView,
   }
 }
 </script>
 
 <template>
   <body>
-    <!-- <div id="tsparticles"></div> -->
     <NavBar></NavBar>
     <RouterView></RouterView>
-    <Footer></Footer>
+    <FooterCom></FooterCom>
   </body>
 </template>

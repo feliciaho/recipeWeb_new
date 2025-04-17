@@ -6,18 +6,18 @@ const router = createRouter({
   linkActiveClass: 'active',
   routes: [
     {
-      path: '/allRecipe',
-      name: 'allRecipe',
+      path: '/',
+      name: 'AllRecipe',
       component: () => import('../views/AllRecipe.vue'),
     },
     {
-      path: '/popular',
-      name: 'popular',
+      path: '/Popular',
+      name: 'Popular',
       component: () => import('../views/Popular.vue'),
     },
     {
-      path: '/myFavorite',
-      name: 'myFavorite',
+      path: '/MyFavorite',
+      name: 'MyFavorite',
       component: () => import('../views/MyFavorite.vue'),
     },
     //新增404page 記得要在router也新增頁面

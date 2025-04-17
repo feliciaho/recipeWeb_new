@@ -1,3 +1,4 @@
+@use "../_foundation/media" as *
 // svg style
 .svgImg
     width: 1.5rem
@@ -14,10 +15,11 @@
 .navbar
     background: linear-gradient(0deg, #24242400 15.05%, #4d4d4daf 85.34%) !important
     color: #fff
-    position: fixed-top
     width: 100%
     z-index: 11
     flex-direction: row-reverse
+    padding: .5rem 1rem
+    font-family: "the-seasons", sans-serif
     @include media-sptb
         position: fixed
         background: linear-gradient(0deg, #242424e1 15.05%, #4d4d4daf 85.34%) !important
@@ -51,14 +53,14 @@
                 @include media-sptb
                     font-size: 18px
                 &:last-child
-                    .nav-link
+                    a
                         border: 0px
-                .nav-link
+                a
                     border-right: 1px solid #ffc5e7
                     padding: 0 40px
-                    color: #ffff
+                    color: #ffffff
                     &:hover
-                        color: #ffff
+                        color: #ffffff
                         position: relative
                         text-shadow: 0 0 5px rgba(255, 255, 255, 0.7),0 0 10px rgba(255, 255, 255, 0.6),0 0 15px rgba(255, 255, 255, 0.5),
                     @include media-sptb
