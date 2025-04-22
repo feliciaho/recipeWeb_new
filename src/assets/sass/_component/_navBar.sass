@@ -1,0 +1,82 @@
+@use "../_foundation/media" as *
+
+// navBar style
+.navbar
+  background: linear-gradient(0deg, #ffffffe1 15.05%, #f0ebe1 85.34%) !important
+  width: 100%
+  z-index: 11
+  flex-direction: row-reverse
+  padding: .5rem 1rem
+  font-family: "the-seasons", sans-serif
+  @include media-sptb
+    position: fixed
+    background: linear-gradient(0deg, #ffffffe1 15.05%, #f0ebe1 85.34%) !important
+  .navbarLogo
+    position: absolute
+    display: ruby
+    top: 2rem
+    left: 1rem
+    @include media-sptb
+      top: .5rem
+      left: .5rem
+    img
+      width: 35px
+    h1
+      color: #ee6352
+      font-size: clamp(1.2rem, 1.4vw, 2rem)
+      padding: 0 0.5rem
+  .searchWrap
+    border: 2px solid #d6d6d6
+    width: 20%
+    margin-right: -23%
+    @include media-sptb
+      position: unset
+      width: 100%
+      max-width: 400px
+      margin-right: unset
+    form
+      display: flex
+      flex-direction: row
+      .search
+        width: 100%
+        display: block
+        padding: 5px
+        font-size: 1rem
+        color: #555555
+      button
+        background-color: #ee6352
+        padding: 5px
+  .navbar-collapse
+    justify-content: center
+    gap: 30px
+    transition: all 1s ease-in-out
+    @include media-sptb
+      flex-direction: column
+      gap: unset
+    &.show
+      display: flex
+    .navbar-nav
+      justify-content: center
+      align-items: center
+      color: #000000e8
+      li
+        position: relative
+        padding: 1rem 1rem
+        @include media-sptb
+          font-size: 1rem
+        &:last-child
+          a
+            border: 0px
+        a
+          padding: 10px
+          color: #262522ab
+          &:hover, &.active
+            border-bottom: 3px solid #ee6352
+            color: #262522
+            position: relative
+            img
+              filter: unset
+          img
+            width: 20px
+            margin: 0 0.5rem
+            filter: invert(0.5)

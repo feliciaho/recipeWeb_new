@@ -1,0 +1,116 @@
+@use "../_foundation/media" as *
+@import url(https://use.typekit.net/yif6mwx.css)
+// common style
+body
+  background-color: #f0ebe1
+  color: white
+  text-align: center
+  font-family: "the-seasons", sans-serif
+  font-style: heavy
+  line-height: 1.4
+  font-weight: 400
+  font-size: 18px
+  @include media-narrow
+    font-size: 14px
+    line-height: 1.2
+  section
+    position: relative
+    display: flex
+    flex-direction: column
+    align-items: center
+    overflow-x: hidden
+    padding: 10vh 0 5vh 0
+    // title
+    h1
+      z-index: 2
+      font-size: clamp(2rem, 3vw, 4rem)
+      margin: 1%
+      color: #ff9688
+    h2
+      font-size: clamp(1.8rem, 1.8vw, 3rem)
+      color: #ee6352
+      margin: 1%
+    h3
+      z-index: 2
+      color: #262522
+      text-align: center
+      max-width: 70%
+      font-size: clamp(1.2rem, 1.5vw, 2.5rem)
+      margin: 1%
+      &.homeSubTitle
+        color: #ffffff
+    // section text instructions
+    .secText
+      width: 100%
+      text-align: start
+      display: flex
+      flex-direction: column
+      padding: 1rem
+    .skillWrap
+      display: flex
+      gap: 0 0.3rem
+      flex-wrap: wrap
+      @include media-narrow
+        display: none
+    span
+      border: unset
+      border-left: 2px solid #ee6352
+      font-size: clamp(1rem, 1vw, 2rem)
+      padding: 0.1rem 0.5rem
+      margin: 0.5rem
+    p
+      font-size: clamp(1rem, 1vw, 2rem)
+      text-align: start
+      color: #262522
+      margin: 0.2rem
+    // label
+    .labelWrap
+      display: flex
+      justify-content: flex-start
+      flex-wrap: wrap
+      gap: 0.5rem 0.3rem
+    label
+      text-align: center
+      color: #000000e8
+      padding: 0.3rem 0.6rem
+      font-size: clamp(1rem, 1vw, 2rem)
+      border: 2px solid #26252271
+      border-radius: 20px
+      background-color: #ffffff79
+      margin: 0.3rem 0
+      height: 40px
+      line-height: 30px
+      img
+        margin: 0 0.1rem
+      &.seemore
+        border: 2px solid #ee6352
+        background-color: #ee6352
+      &.rating
+        border: 2px solid #ffe1b3
+        background-color: #ffe1b3
+        position: absolute
+        top: .5rem
+        right: .5rem
+        z-index: 4
+      &.add
+        border: 2px solid #ee6352
+        background-color: #ee6352
+        color: #ffffff
+        img
+          filter: invert(1)
+        &:hover, &.active
+          border: 2px solid #000000
+          background-color: #000000
+          transition: all 0.3s ease-in-out
+          cursor: pointer
+      &.remove
+        border: 2px solid #ffffff
+        background-color: #c0b0ae
+        &:hover, &.active
+          color: #ffffff
+          border: 2px solid #000000
+          background-color: #000000
+          transition: all 0.3s ease-in-out
+          cursor: pointer
+          img
+            filter: invert(1)

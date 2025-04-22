@@ -1,0 +1,37 @@
+// pagination
+.pagination
+  width: 100%
+  display: flex
+  justify-content: center
+  margin: 5vh 0
+  li
+    border: 2px solid #ffffff
+    background-color: #262522
+    transition: 0.3s all
+    border-radius: 50px
+    margin: 0 1px
+    &:hover, &.active
+      background-color: #ffffff
+      border: 2px solid #2625227e
+      a
+        color: #262522
+    &.disabled
+      pointer-events: none
+      opacity: 0.5
+    a
+      display: block
+      height: 100%
+      width: 100%
+      color: #ffffff
+      padding: 10px 16px
+// footer
+footer
+  border-top: 2px solid #2625226e
+  margin: 10px 5%
+  color: #262522
+  .footerImg
+    display: flex
+    flex-direction: row
+    justify-content: center
+    gap: 10px
+    margin: 10px

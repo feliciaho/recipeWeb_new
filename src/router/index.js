@@ -5,28 +5,33 @@ const router = createRouter({
   //改成linkActiveClass active
   linkActiveClass: 'active',
   routes: [
+    //預設是homeView
+    { path: '/', redirect: '/homeView' },
     {
-      path: '/',
-      name: 'AllRecipe',
-      component: () => import('../views/AllRecipe.vue'),
+      path: '/homeView',
+      name: 'HomeView',
+      component: () => import('../views/HomeView.vue'),
     },
     {
-      path: '/Popular',
-      name: 'Popular',
-      component: () => import('../views/Popular.vue'),
+      path: '/popularView',
+      name: 'PopularView',
+      component: () => import('../views/PopularView.vue'),
     },
     {
-      path: '/MyFavorite',
-      name: 'MyFavorite',
-      component: () => import('../views/MyFavorite.vue'),
+      path: '/myFavoriteView',
+      name: 'MyFavoriteView',
+      component: () => import('../views/MyFavoriteView.vue'),
     },
     //新增404page 記得要在router也新增頁面
     {
       path: '/:pathMatch(.*)*',
       name: 'NotFound',
-      component: () => import('../views/NotFound.vue'),
+      component: () => import('../views/NotFoundView.vue'),
     },
   ],
+  // 每換一次路由就回到最上面
+  scrollBehavior() {
+    return { top: 0 }
+  },
 })
-
 export default router
