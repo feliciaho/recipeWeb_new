@@ -9,7 +9,7 @@ export default {
       //如果不解構會直接修改返回新的數組
       // 使用[...]解構,這樣可以避免修改原始數據。
       // 返回排序後的新數組,取前10組
-      return [...this.recipes].sort((a, b) => b.rating - a.rating).slice(0, 10);
+      return [...this.recipes].sort((a, b) => b.rating - a.rating).slice(0, 5);
     },
   },
   methods: {
@@ -32,7 +32,7 @@ export default {
     <!-- 提取被search pagination過濾後的nowPageStore -->
     <div class="popularRecipes" v-for="i in sortProducts" :key="i.id + 'recipe'">
       <div class="banner">
-        <label class="rating"><img src="../images/star.png" alt="rating" width="25px" />
+        <label class="rating"><img src="../images/star.png" alt="rating" width="25px"/>
           {{ i.rating }}
         </label>
         <a target="_blank"><img :src="i.image"></a>

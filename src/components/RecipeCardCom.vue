@@ -12,9 +12,6 @@ export default {
     ...mapState(recipeStore, ['recipes']),
     ...mapState(filterStore, ['filterRecipes']),
     ...mapState(paginationStore, ['nowPageStore']),
-    // showFavorite() {
-    //   return this.$route.path === '/myFavoriteView';
-    // }
   },
   methods: {
     ...mapActions(recipeStore, ['fetchApi']),
