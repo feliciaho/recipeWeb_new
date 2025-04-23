@@ -22,6 +22,15 @@ const router = createRouter({
       name: 'MyFavoriteView',
       component: () => import('../views/MyFavoriteView.vue'),
     },
+    {
+      path: '/recipeView/:id',
+      name: 'RecipeView',
+      component: () => import('../views/RecipeView.vue'),
+      // 將路由參數 id 傳遞為 props
+      props: (route) =>({
+        id: route.params.id
+      })
+    },
     //新增404page 記得要在router也新增頁面
     {
       path: '/:pathMatch(.*)*',

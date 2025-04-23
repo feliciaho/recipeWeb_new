@@ -37,10 +37,6 @@ body::-webkit-scrollbar {
 body::-webkit-scrollbar-track {
   background: #434343;
 }
-body::-webkit-scrollbar-thumb {
-  background: #ee6352;
-  border-radius: 3px;
-}
 
 ol, ul, button {
   margin: 0;
@@ -85,88 +81,123 @@ img {
   height: auto;
 }
 
-section.home .homeBanner {
-  position: relative;
-  background: url(../../images/homeBanner.jpg) no-repeat center center;
-  background-size: cover;
-  height: 50vh;
-  max-width: 1300px;
-  width: 80%;
-  margin-bottom: 2%;
-  border-radius: 20px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  border: 2px solid #ffffff;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  overflow: hidden;
-}
-section.home .homeBanner:before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
+/**** project ****/
+/* base */
+.pagination {
   width: 100%;
-  height: 100%;
-  background-color: rgba(49, 46, 38, 0.712);
-  z-index: 1;
-}
-section.home .homeRecipsWrap {
-  max-width: 1300px;
-  width: 80%;
   display: flex;
   justify-content: center;
+  margin: 5vh 0;
+}
+.pagination li {
+  border: 2px solid #ffffff;
+  background-color: #302b2b;
+  transition: 0.3s all;
+  border-radius: 50px;
+  margin: 0 1px;
+}
+.pagination li:hover, .pagination li.active {
+  background-color: #ffffff;
+  border: 2px solid rgba(48, 43, 43, 0.5568627451);
+}
+.pagination li:hover a, .pagination li.active a {
+  color: #302b2b;
+}
+.pagination li.disabled {
+  pointer-events: none;
+  opacity: 0.5;
+}
+.pagination li a {
+  display: block;
+  height: 100%;
+  width: 100%;
+  color: #ffffff;
+  padding: 10px 16px;
+}
+
+footer {
+  border-top: 2px solid rgba(48, 43, 43, 0.5568627451);
+  margin: 10px 5%;
+  color: #302b2b;
+}
+footer .footerImg {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 10px;
+  margin: 10px;
+}
+
+.svgImg {
+  width: 1.5rem;
+  height: 1.5rem;
+  fill: #302b2b;
+}
+.svgImg_nav {
+  width: 2rem;
+  fill: #302b2b;
+  height: 2rem;
+  transition: 0.3s all;
+}
+.svgImg_nav:hover {
+  transform: scale(1.2);
+}
+
+section.home .homeRecipsWrap, section.myFavorite .homeRecipsWrap {
+  max-width: 1500px;
+  width: 80%;
+  display: flex;
+  justify-content: flex-start;
   flex-wrap: wrap;
   gap: 1rem;
 }
-section.home .homeRecipsWrap .homeRecipes {
+section.home .homeRecipsWrap .homeRecipes, section.myFavorite .homeRecipsWrap .homeRecipes {
   width: calc(33.3333333333% - 0.75rem);
   display: flex;
-  color: #ee6352;
+  color: #f5715f;
   justify-content: center;
   align-content: flex-start;
   flex-wrap: wrap;
   background-color: #fffbf2;
   border-radius: 20px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  border: 2px solid rgba(255, 255, 255, 0.431372549);
+  border: 2px solid #ffffff;
   overflow: hidden;
 }
 @media only screen and (max-width: 992px) {
-  section.home .homeRecipsWrap .homeRecipes {
+  section.home .homeRecipsWrap .homeRecipes, section.myFavorite .homeRecipsWrap .homeRecipes {
     width: calc(50% - 0.5rem);
   }
 }
 @media only screen and (max-width: 767px) {
-  section.home .homeRecipsWrap .homeRecipes {
+  section.home .homeRecipsWrap .homeRecipes, section.myFavorite .homeRecipsWrap .homeRecipes {
     width: 100%;
   }
 }
-section.home .homeRecipsWrap .homeRecipes .banner {
+section.home .homeRecipsWrap .homeRecipes .banner, section.myFavorite .homeRecipsWrap .homeRecipes .banner {
   width: 100%;
   max-height: 300px;
   position: relative;
   z-index: 2;
   overflow: hidden;
 }
-section.home .homeRecipsWrap .homeRecipes .banner:hover .mask {
+section.home .homeRecipsWrap .homeRecipes .banner:hover .mask, section.myFavorite .homeRecipsWrap .homeRecipes .banner:hover .mask {
   opacity: 1;
 }
-section.home .homeRecipsWrap .homeRecipes .banner:hover img {
+section.home .homeRecipsWrap .homeRecipes .banner:hover img, section.myFavorite .homeRecipsWrap .homeRecipes .banner:hover img {
   transform: scale(1.1);
 }
-section.home .homeRecipsWrap .homeRecipes .banner a {
+section.home .homeRecipsWrap .homeRecipes .banner a, section.myFavorite .homeRecipsWrap .homeRecipes .banner a {
   position: relative;
   z-index: 3;
   cursor: pointer;
 }
-section.home .homeRecipsWrap .homeRecipes .banner a img {
+section.home .homeRecipsWrap .homeRecipes .banner a img, section.myFavorite .homeRecipsWrap .homeRecipes .banner a img {
   transition: 0.2s linear;
   -o-object-fit: contain;
      object-fit: contain;
 }
-section.home .homeRecipsWrap .homeRecipes .banner .mask {
+section.home .homeRecipsWrap .homeRecipes .banner .mask, section.myFavorite .homeRecipsWrap .homeRecipes .banner .mask {
   z-index: 4;
   position: absolute;
   top: 0;
@@ -188,8 +219,8 @@ section.popularRecipe .popularBanner {
   position: relative;
   background: url(../../images/popularBanner.jpg) no-repeat center center;
   background-size: cover;
-  height: 50vh;
-  max-width: 1300px;
+  height: 40vh;
+  max-width: 1500px;
   width: 80%;
   margin-bottom: 2%;
   border-radius: 20px;
@@ -208,15 +239,15 @@ section.popularRecipe .popularBanner:before {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(49, 46, 38, 0.712);
+  background-color: rgba(24, 24, 24, 0.54);
   z-index: 1;
 }
 section.popularRecipe .popularRecipes {
   position: relative;
-  height: 40vh;
-  max-width: 1300px;
+  height: 30vh;
+  max-width: 1500px;
   width: 80%;
-  margin: 2%;
+  margin: 1rem 0;
   border-radius: 20px;
   display: flex;
   justify-content: flex-start;
@@ -224,6 +255,7 @@ section.popularRecipe .popularRecipes {
   flex-direction: row;
   border: 2px solid #ffffff;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background: #fffbf2;
   overflow: hidden;
 }
 @media only screen and (max-width: 767px) {
@@ -237,7 +269,6 @@ section.popularRecipe .popularRecipes .banner {
   height: 100%;
   max-width: 400px;
   overflow: hidden;
-  z-index: 2;
 }
 @media only screen and (max-width: 767px) {
   section.popularRecipe .popularRecipes .banner {
@@ -272,8 +303,8 @@ section.popularRecipe .popularRecipes .banner .mask {
   align-items: center;
   opacity: 0;
   transition: 0.3s linear;
-  font-size: 24px;
   pointer-events: none;
+  z-index: 5;
 }
 section.popularRecipe .popularRecipes p.ingredients {
   text-overflow: ellipsis;
@@ -283,84 +314,83 @@ section.popularRecipe .popularRecipes p.ingredients {
   -webkit-box-orient: vertical;
 }
 
-.mainTitle1 b {
-  transform: scaleY(0);
-  animation: textTransform_in 6s infinite cubic-bezier(0.76, 0, 0.24, 1);
+section.recipePage {
+  max-width: 1500px;
+  width: 80%;
 }
-.mainTitle1 b:nth-child(1) {
-  animation-delay: 0s;
+section.recipePage .tag {
+  display: inline-block;
+  background: #f2623e;
+  color: white;
+  padding: 0.3rem 1rem;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: bold;
 }
-.mainTitle1 b:nth-child(2) {
-  animation-delay: 0.1s;
+section.recipePage h1 {
+  margin-top: 1rem;
+  font-size: 2.5rem;
+  color: #1c1c1c;
+  font-weight: 800;
 }
-.mainTitle1 b:nth-child(3) {
-  animation-delay: 0.2s;
+section.recipePage .description {
+  margin-top: 1rem;
+  color: #5a5a5a;
+  line-height: 1.6;
 }
-.mainTitle1 b:nth-child(4) {
-  animation-delay: 0.3s;
+section.recipePage .info {
+  display: flex;
+  gap: 1.5rem;
+  margin: 1.5rem 0;
+  list-style: none;
+  padding: 0;
+  font-size: 0.9rem;
 }
-.mainTitle1 b:nth-child(5) {
-  animation-delay: 0.4s;
+section.recipePage .info li {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-weight: 500;
+  color: #444;
 }
-.mainTitle1 b:nth-child(6) {
-  animation-delay: 0.5s;
+section.recipePage .info li i {
+  font-size: 1rem;
 }
-.mainTitle1 b:nth-child(7) {
-  animation-delay: 0.6s;
+section.recipePage .recipeImage {
+  margin: 1rem 0;
 }
-.mainTitle1 b:nth-child(8) {
-  animation-delay: 0.7s;
+section.recipePage .recipeImage img {
+  width: 100%;
+  border-radius: 12px;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
-.mainTitle1 b:nth-child(9) {
-  animation-delay: 0.8s;
+section.recipePage .recipeContent {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
 }
-.mainTitle1 b:nth-child(10) {
-  animation-delay: 0.9s;
+section.recipePage .recipeContent .story {
+  color: #444;
+  font-size: 1rem;
+  line-height: 1.8;
 }
-.mainTitle1 b:nth-child(11) {
-  animation-delay: 1s;
+section.recipePage .recipeContent .ingredientsBox {
+  background: #fff6f3;
+  padding: 1.5rem;
+  border-radius: 12px;
 }
-.mainTitle1 b:nth-child(12) {
-  animation-delay: 1.1s;
+section.recipePage .recipeContent .ingredientsBox h3 {
+  color: #f2623e;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  font-size: 1.1rem;
 }
-.mainTitle1 b:nth-child(13) {
-  animation-delay: 1.2s;
+section.recipePage .recipeContent .ingredientsBox .ingredients {
+  padding-left: 1.2rem;
 }
-.mainTitle1 b:nth-child(14) {
-  animation-delay: 1.3s;
-}
-.mainTitle1 b:nth-child(15) {
-  animation-delay: 1.4s;
-}
-.mainTitle1 b:nth-child(16) {
-  animation-delay: 1.5s;
-}
-.mainTitle1 b:nth-child(17) {
-  animation-delay: 1.6s;
-}
-.mainTitle1 b:nth-child(18) {
-  animation-delay: 1.7s;
-}
-.mainTitle1 b:nth-child(19) {
-  animation-delay: 1.8s;
-}
-@keyframes textTransform_in {
-  0% {
-    transform-origin: 50% 100%;
-    transform: scaleY(0);
-  }
-  25% {
-    transform-origin: 50% 100%;
-    transform: scaleY(1);
-  }
-  75% {
-    transform-origin: 50% 0%;
-    transform: scaleY(1);
-  }
-  100% {
-    transform-origin: 50% 0%;
-    transform: scaleY(0);
-  }
+section.recipePage .recipeContent .ingredientsBox .ingredients li {
+  line-height: 1.6;
 }
 
 body {
@@ -370,7 +400,7 @@ body {
   font-family: "the-seasons", sans-serif;
   font-style: heavy;
   line-height: 1.4;
-  font-weight: 500;
+  font-weight: 400;
   font-size: 18px;
 }
 @media only screen and (max-width: 480px) {
@@ -391,22 +421,22 @@ body section h1 {
   z-index: 2;
   font-size: clamp(2rem, 3vw, 4rem);
   margin: 1%;
-  color: #ff9688;
+  color: #f5715f;
 }
 body section h2 {
   font-size: clamp(1.8rem, 1.8vw, 3rem);
-  color: #ee6352;
+  color: #ff8777;
   margin: 1%;
 }
 body section h3 {
   z-index: 2;
-  color: #262522;
+  color: #484848;
   text-align: center;
   max-width: 70%;
   font-size: clamp(1.2rem, 1.5vw, 2.5rem);
   margin: 1%;
 }
-body section h3.homeSubTitle {
+body section h3.popularTitle {
   color: #ffffff;
 }
 body section .secText {
@@ -428,7 +458,7 @@ body section .skillWrap {
 }
 body section span {
   border: unset;
-  border-left: 2px solid #ee6352;
+  border-left: 2px solid #f5715f;
   font-size: clamp(1rem, 1vw, 2rem);
   padding: 0.1rem 0.5rem;
   margin: 0.5rem;
@@ -436,7 +466,7 @@ body section span {
 body section p {
   font-size: clamp(1rem, 1vw, 2rem);
   text-align: start;
-  color: #262522;
+  color: #484848;
   margin: 0.2rem;
 }
 body section .labelWrap {
@@ -447,68 +477,68 @@ body section .labelWrap {
 }
 body section label {
   text-align: center;
-  color: rgba(0, 0, 0, 0.9098039216);
+  color: #484848;
   padding: 0.3rem 0.6rem;
   font-size: clamp(1rem, 1vw, 2rem);
-  border: 2px solid rgba(38, 37, 34, 0.4431372549);
+  border: 2px solid #808285;
   border-radius: 20px;
-  background-color: rgba(255, 255, 255, 0.4745098039);
+  background-color: #ffffff;
   margin: 0.3rem 0;
-  line-height: 1.6;
+  height: 35px;
+  line-height: 28px;
+}
+body section label img {
+  margin: 0 0.1rem;
+  margin-top: -2px;
+  width: 1rem;
 }
 body section label.seemore {
-  border: 2px solid #ee6352;
-  background-color: #ee6352;
+  border: 2px solid #f5715f;
+  background-color: #f5715f;
+  color: #302b2b;
 }
-body section label.time {
-  color: #ffffff;
-  border: 2px solid #ffffff;
-  background-color: #000000;
+body section label.rating {
+  border: 2px solid #fff2dd;
+  background-color: #ffe1b3;
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  z-index: 4;
 }
 body section label.add {
-  border: 2px solid #ffffff;
-  background-color: #ee6352;
-  padding: 0.3rem 0.8rem;
+  border: 2px solid #f5715f;
+  background-color: #f5715f;
+  color: #ffffff;
+}
+body section label.add img {
+  filter: invert(1);
 }
 body section label.add:hover, body section label.add.active {
-  color: #ffffff;
-  border: 2px solid #ee6352;
-  background-color: #000000;
-  transition: all 0.5s ease-in-out;
+  border: 2px solid #302b2b;
+  background-color: #302b2b;
+  transition: all 0.3s ease-in-out;
   cursor: pointer;
-}
-body section label.add:hover img, body section label.add.active img {
-  filter: invert(1);
 }
 body section label.remove {
   border: 2px solid #ffffff;
   background-color: #c0b0ae;
-  padding: 0.3rem 0.8rem;
 }
 body section label.remove:hover, body section label.remove.active {
   color: #ffffff;
-  border: 2px solid #ee6352;
-  background-color: #000000;
-  transition: all 0.5s ease-in-out;
+  border: 2px solid #302b2b;
+  background-color: #302b2b;
+  transition: all 0.3s ease-in-out;
   cursor: pointer;
 }
 body section label.remove:hover img, body section label.remove.active img {
   filter: invert(1);
 }
-
-.svgImg {
-  width: 1.5rem;
-  height: 1.5rem;
-  fill: #262522;
-}
-.svgImg_nav {
-  width: 2rem;
-  fill: #262522;
-  height: 2rem;
-  transition: 0.3s all;
-}
-.svgImg_nav:hover {
-  transform: scale(1.2);
+body section label.tag {
+  background-color: #f5715f;
+  color: #ffffff;
+  padding: 0.3rem 0.8rem;
+  display: inline-block;
+  border: unset;
 }
 
 .navbar {
@@ -541,12 +571,12 @@ body section label.remove:hover img, body section label.remove.active img {
   width: 35px;
 }
 .navbar .navbarLogo h1 {
-  color: #ee6352;
+  color: #f5715f;
   font-size: clamp(1.2rem, 1.4vw, 2rem);
   padding: 0 0.5rem;
 }
 .navbar .searchWrap {
-  border: 2px solid #d6d6d6;
+  border: 2px solid #d5d5d6;
   width: 20%;
   margin-right: -23%;
 }
@@ -567,10 +597,10 @@ body section label.remove:hover img, body section label.remove.active img {
   display: block;
   padding: 5px;
   font-size: 1rem;
-  color: #555555;
+  color: #484848;
 }
 .navbar .searchWrap form button {
-  background-color: #ee6352;
+  background-color: #f5715f;
   padding: 5px;
 }
 .navbar .navbar-collapse {
@@ -590,14 +620,15 @@ body section label.remove:hover img, body section label.remove.active img {
 .navbar .navbar-collapse .navbar-nav {
   justify-content: center;
   align-items: center;
+  color: rgba(0, 0, 0, 0.9098039216);
 }
 .navbar .navbar-collapse .navbar-nav li {
   position: relative;
-  padding: 1rem 2rem;
+  padding: 1rem 1rem;
 }
 @media only screen and (max-width: 992px) {
   .navbar .navbar-collapse .navbar-nav li {
-    font-size: 18px;
+    font-size: 1rem;
   }
 }
 .navbar .navbar-collapse .navbar-nav li:last-child a {
@@ -605,55 +636,89 @@ body section label.remove:hover img, body section label.remove.active img {
 }
 .navbar .navbar-collapse .navbar-nav li a {
   padding: 10px;
-  color: rgba(38, 37, 34, 0.6705882353);
+  color: #302b2b;
 }
 .navbar .navbar-collapse .navbar-nav li a:hover, .navbar .navbar-collapse .navbar-nav li a.active {
-  border-bottom: 3px solid #ee6352;
-  color: #262522;
+  border-bottom: 3px solid #f5715f;
+  color: #302b2b;
   position: relative;
 }
+.navbar .navbar-collapse .navbar-nav li a:hover img, .navbar .navbar-collapse .navbar-nav li a.active img {
+  filter: unset;
+}
+.navbar .navbar-collapse .navbar-nav li a img {
+  width: 20px;
+  margin: 0 0.5rem;
+  filter: invert(0.5);
+}
 
-.pagination {
+.aboutUsWrap {
+  max-width: 1500px;
+  width: 80%;
+  border-radius: 20px;
+  border: 2px solid #c3beb6;
+  padding: 2rem;
+  text-align: start;
+  margin-bottom: 6rem;
+}
+@media only screen and (max-width: 1100px) {
+  .aboutUsWrap {
+    max-height: 100vh;
+    padding: 1rem;
+    margin-bottom: 2rem;
+  }
+}
+.aboutUsWrap .aboutUs {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 2rem;
   width: 100%;
-  display: flex;
-  justify-content: center;
-  margin: 5vh 0;
-}
-.pagination li {
-  border: 2px solid #ffffff;
-  background-color: #262522;
-  transition: 0.3s all;
-  border-radius: 50px;
-  margin: 0 1px;
-}
-.pagination li:hover, .pagination li.active {
-  background-color: #ffffff;
-  border: 2px solid rgba(38, 37, 34, 0.4941176471);
-}
-.pagination li:hover a, .pagination li.active a {
-  color: #262522;
-}
-.pagination li.disabled {
-  pointer-events: none;
-  opacity: 0.5;
-}
-.pagination li a {
-  display: block;
   height: 100%;
-  width: 100%;
-  color: #ffffff;
-  padding: 10px 16px;
 }
-
-footer {
-  border-top: 2px solid rgba(38, 37, 34, 0.431372549);
-  margin: 10px 5%;
-  color: #262522;
+@media only screen and (max-width: 1100px) {
+  .aboutUsWrap .aboutUs {
+    grid-template-columns: repeat(1, 1fr);
+    gap: unset;
+  }
 }
-footer .footerImg {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  gap: 10px;
-  margin: 10px;
+.aboutUsWrap .aboutUs .aboutTextWrap {
+  grid-column: 1/2;
+  grid-row: 1/2;
+}
+.aboutUsWrap .aboutUs .aboutTextWrap .aboutText {
+  padding: 4rem 2rem 1rem 0rem;
+}
+@media only screen and (max-width: 1100px) {
+  .aboutUsWrap .aboutUs .aboutTextWrap .aboutText {
+    padding: 1rem 0rem 1rem 0rem;
+  }
+}
+.aboutUsWrap .aboutUs .aboutBox {
+  overflow: hidden;
+  border-radius: 20px;
+}
+.aboutUsWrap .aboutUs .banner {
+  overflow: hidden;
+  border-radius: 20px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.aboutUsWrap .aboutUs .banner-2 {
+  grid-column: 2/3;
+  grid-row: 1/2;
+  background: url("../../images/banner1.jpg") no-repeat center center;
+  background-size: cover;
+}
+.aboutUsWrap .aboutUs .banner-3 {
+  grid-column: 3/4;
+  grid-row: 1/3;
+  background: url("../../images/banner2.jpg") no-repeat center center;
+  background-size: cover;
+}
+.aboutUsWrap .aboutUs .banner-4 {
+  grid-column: 1/3;
+  grid-row: 2/3;
+  background: url("../../images/banner3.jpg") no-repeat center center;
+  background-size: cover;
 }/*# sourceMappingURL=app.css.map */

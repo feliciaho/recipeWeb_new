@@ -18,7 +18,6 @@ export default defineStore('favoriteStore', {
       const existingRecipe = this.favoriteRecipes.find((item) => item.id === recipeAddId)
       // 如果已存在則return
       if (existingRecipe) {
-        console.log('已存在於收藏中')
         console.log(this.isFavorite);
         return
       } else{
@@ -39,8 +38,7 @@ export default defineStore('favoriteStore', {
         return
       // 如果存在則從收藏中刪除
       }else{
-        console.log('已從收藏中刪除')
-        const index = this.favoriteRecipes.find((item) => item.id === recipeRemoveId);
+        const index = this.favoriteRecipes.findIndex((item) => item.id === recipeRemoveId);
         // 將此物件從陣列中刪除
         this.favoriteRecipes.splice(index, 1);
         // 再將此陣列重新轉回字串存入localStorage

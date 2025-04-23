@@ -1,10 +1,12 @@
 <script>
 import { mapState, mapActions } from 'pinia';
 import recipeStore from '@/stores/recipeStore';
+import favoriteStore from '@/stores/favoriteStore';
 
 export default {
   computed: {
     ...mapState(recipeStore, ['recipes']),
+    ...mapState(favoriteStore, ['favoriteRecipes']),
     sortProducts() {
       //如果不解構會直接修改返回新的數組
       // 使用[...]解構,這樣可以避免修改原始數據。
@@ -14,6 +16,10 @@ export default {
   },
   methods: {
     ...mapActions(recipeStore, ['fetchApi']),
+    ...mapActions(favoriteStore, ['addFavorite', 'removeFavorite']),
+    isFavorite(favoriteId) {
+      return this.favoriteRecipes.some((item) => item.id === favoriteId);
+    },
   },
   // 這樣可以避免一開始filterData沒有資料
   mounted() {
@@ -24,18 +30,27 @@ export default {
 <template>
   <section class="popularRecipe" id="PopularRecipe">
     <div class="popularBanner">
-      <h1 class="secTitle">Popular Recipes</h1>
-      <h3 class="homeSubTitle">
+      <h1>Popular Recipes</h1>
+      <h3 class="popularTitle">
         Discover the most popular recipes among our users.
       </h3>
     </div>
     <!-- 提取被search pagination過濾後的nowPageStore -->
     <div class="popularRecipes" v-for="i in sortProducts" :key="i.id + 'recipe'">
       <div class="banner">
-        <label class="rating"><img src="../images/star.png" alt="rating" width="25px"/>
+        <label class="rating"><img src="../images/star.png" alt="rating" />
           {{ i.rating }}
         </label>
-        <a target="_blank"><img :src="i.image"></a>
+        <!-- 抓取id當入參數回傳給isFavorite查看是否有收藏 -->
+        <label class="add" @click="addFavorite(i.id)" v-if="!isFavorite(i.id)">
+          <img src="../images/addIcon.png" alt="add to favorite" />
+        </label>
+        <label class="remove" @click="removeFavorite(i.id)" v-if="isFavorite(i.id)">
+          <img src="../images/removeIcon.png" alt="remove to favorite" />
+        </label>
+        <RouterLink :to="'/recipeView/' + i.id">
+          <img :src="i.image">
+        </RouterLink>
         <div class="mask">
           <label class="seemore">see more</label>
         </div>
@@ -44,7 +59,7 @@ export default {
       <div class="secText">
         <div>
           <h2 class="popularTitle">{{ i.name }}</h2>
-          <p>Time <span>{{ i.prepTimeMinutes + i.cookTimeMinutes }}min</span></p>
+          <p><img src="../images/time.png">Time <span>{{ i.prepTimeMinutes + i.cookTimeMinutes }}min</span></p>
           <div class="skillWrap">
             <label v-for="tag in i.tags" :key="tag + 'tag'">#{{ tag }}</label>
           </div>

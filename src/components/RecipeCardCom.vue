@@ -54,11 +54,11 @@ export default {
         <div class="labelWrap">
           <label class="time">Time : {{ i.prepTimeMinutes + i.cookTimeMinutes }}min</label>
           <label class="add" @click="addFavorite(i.id)">
-            <img src="../images/addIcon.png" alt="add to favorite" width="25px"/>
+            <img src="../images/addIcon.png" alt="add to favorite"/>
             add
           </label>
           <label class="remove" @click="removeFavorite(i.id)">
-            <img src="../images/removeIcon.png" alt="remove to favorite" width="25px"/>
+            <img src="../images/removeIcon.png" alt="remove to favorite"/>
             remove
           </label>
         </div>

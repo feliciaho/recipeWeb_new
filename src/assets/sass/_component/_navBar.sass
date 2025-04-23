@@ -1,8 +1,9 @@
 @use "../_foundation/media" as *
+@use "../_foundation/color" as *
 
 // navBar style
 .navbar
-  background: linear-gradient(0deg, #ffffffe1 15.05%, #f0ebe1 85.34%) !important
+  background: linear-gradient(0deg, #ffffffe1 15.05%, $bgColor 85.34%) !important
   width: 100%
   z-index: 11
   flex-direction: row-reverse
@@ -10,7 +11,7 @@
   font-family: "the-seasons", sans-serif
   @include media-sptb
     position: fixed
-    background: linear-gradient(0deg, #ffffffe1 15.05%, #f0ebe1 85.34%) !important
+    background: linear-gradient(0deg, #ffffffe1 15.05%, $bgColor 85.34%) !important
   .navbarLogo
     position: absolute
     display: ruby
@@ -22,11 +23,11 @@
     img
       width: 35px
     h1
-      color: #ee6352
+      color: $mainColor1
       font-size: clamp(1.2rem, 1.4vw, 2rem)
       padding: 0 0.5rem
   .searchWrap
-    border: 2px solid #d6d6d6
+    border: 2px solid $lightgray
     width: 20%
     margin-right: -23%
     @include media-sptb
@@ -42,9 +43,9 @@
         display: block
         padding: 5px
         font-size: 1rem
-        color: #555555
+        color: $darkgray
       button
-        background-color: #ee6352
+        background-color: $mainColor1
         padding: 5px
   .navbar-collapse
     justify-content: center
@@ -69,10 +70,10 @@
             border: 0px
         a
           padding: 10px
-          color: #262522ab
+          color: $black
           &:hover, &.active
-            border-bottom: 3px solid #ee6352
-            color: #262522
+            border-bottom: 3px solid $mainColor1
+            color: $black
             position: relative
             img
               filter: unset

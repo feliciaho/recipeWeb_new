@@ -1,13 +1,10 @@
 <script>
+import { mapActions, mapState } from 'pinia';
 import recipeStore from '@/stores/recipeStore';
 import favoriteStore from '@/stores/favoriteStore';
 import paginationStore from '@/stores/paginationStore';
 
-import { mapActions, mapState } from 'pinia';
 export default {
-  data() {
-    return {};
-  },
   computed: {
     ...mapState(favoriteStore, ['favoriteRecipes']),
     ...mapState(recipeStore, ['recipes']),
@@ -29,10 +26,15 @@ export default {
       <div class="homeRecipes" v-for="i in favoriteRecipes" :key="i.id + 'recipe'">
         <!-- banner -->
         <div class="banner">
-          <label class="rating"><img src="../images/star.png" alt="rating" width="25px" />
+          <label class="rating"><img src="../images/star.png" alt="rating" />
             {{ i.rating }}
           </label>
-          <a target="_blank"><img :src="i.image"></a>
+          <label class="remove" @click="removeFavorite(i.id)">
+            <img src="../images/removeIcon.png" alt="remove to favorite" />
+          </label>
+          <RouterLink :to="'/recipeView/' + i.id">
+            <img :src="i.image">
+          </RouterLink>
           <div class="mask">
             <label class="seemore">see more</label>
           </div>
@@ -45,12 +47,6 @@ export default {
             <div class="skillWrap">
               <label v-for="tag in i.tags" :key="tag + 'tag'">#{{ tag }}</label>
             </div>
-          </div>
-          <div class="labelWrap">
-            <label class="remove" @click="removeFavorite(i.id)">
-              <img src="../images/removeIcon.png" alt="remove to favorite" width="25px" />
-              remove
-            </label>
           </div>
         </div>
       </div>

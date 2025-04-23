@@ -6,13 +6,12 @@ import loadingStore from '@/stores/loadingStore';
 import favoriteStore from '@/stores/favoriteStore';
 import paginationStore from '@/stores/paginationStore';
 import PaginationCom from '@/components/PaginationCom.vue';
+import AboutUsCom from '@/components/AboutUsCom.vue';
 
 export default {
   components: {
     PaginationCom,
-  },
-  data() {
-    return {};
+    AboutUsCom,
   },
   computed: {
     ...mapState(loadingStore, ['isloading']),
@@ -37,30 +36,34 @@ export default {
     this.filterData();
     this.stopLoading();
   },
-
 }
 </script>
 <template>
   <LoadingOverlay :active="isloading"></LoadingOverlay>
   <section class="home" id="home">
-    <div class="homeBanner">
-      <h1 class="secTitle">Explore Recipes</h1>
-      <h3 class="homeSubTitle">
-        Discover a world of flavors and culinary delights <br> with our curated collection of recipes.
-      </h3>
-    </div>
-    <h2 v-if="!nowPageStore.length">
+    <h1 v-if="!nowPageStore.length">
       Not Found
-    </h2>
+    </h1>
+    <AboutUsCom></AboutUsCom>
+    <h1 id="homeWrap">Explore Recipes</h1>
     <!-- 提取被search pagination過濾後的nowPageStore -->
     <div class="homeRecipsWrap">
       <div class="homeRecipes" v-for="i in nowPageStore" :key="i.id + 'recipe'">
         <!-- banner -->
         <div class="banner">
-          <label class="rating"><img src="../images/star.png" alt="rating" width="25px" />
+          <label class="rating"><img src="../images/star.png" alt="rating" />
             {{ i.rating }}
           </label>
-          <a target="_blank"><img :src="i.image"></a>
+          <!-- 抓取id當入參數回傳給isFavorite查看是否有收藏 -->
+          <label class="add" @click="addFavorite(i.id)" v-if="!isFavorite(i.id)">
+            <img src="../images/addIcon.png" alt="add to favorite" />
+          </label>
+          <label class="remove" @click="removeFavorite(i.id)" v-if="isFavorite(i.id)">
+            <img src="../images/removeIcon.png" alt="remove to favorite" />
+          </label>
+          <RouterLink :to="'/recipeView/' + i.id">
+            <img :src="i.image">
+          </RouterLink>
           <div class="mask">
             <label class="seemore">see more</label>
           </div>
@@ -69,21 +72,10 @@ export default {
         <div class="secText">
           <div>
             <h2 class="homeRecipesTitle">{{ i.name }}</h2>
-            <p>Time <span>{{ i.prepTimeMinutes + i.cookTimeMinutes }}min</span></p>
+            <p><img src="../images/time.png">Time <span>{{ i.prepTimeMinutes + i.cookTimeMinutes }}min</span></p>
             <div class="skillWrap">
               <label v-for="tag in i.tags" :key="tag + 'tag'">#{{ tag }}</label>
             </div>
-          </div>
-          <div class="labelWrap">
-            <!-- 抓取id當入參數回傳給isFavorite查看是否有收藏 -->
-            <label class="add" @click="addFavorite(i.id)" v-if="!isFavorite(i.id)">
-              <img src="../images/addIcon.png" alt="add to favorite" width="25px" />
-              add
-            </label>
-            <label class="remove" @click="removeFavorite(i.id)" v-if="isFavorite(i.id)">
-              <img src="../images/removeIcon.png" alt="remove to favorite" width="25px" />
-              remove
-            </label>
           </div>
         </div>
       </div>
