@@ -14,18 +14,20 @@
     background: linear-gradient(0deg, #ffffffe1 15.05%, $bgColor 85.34%) !important
   .navbarLogo
     position: absolute
-    display: ruby
+    display: inline-block
     top: 2rem
     left: 1rem
+    font-size: clamp(1.2rem, 1.4vw, 2rem)
     @include media-sptb
       top: .5rem
       left: .5rem
-    img
-      width: 35px
-    h1
+    a
       color: $mainColor1
-      font-size: clamp(1.2rem, 1.4vw, 2rem)
-      padding: 0 0.5rem
+      display: flex
+      align-items: center
+      img
+        margin: 0 0.5rem
+        width: 35px
   .searchWrap
     border: 2px solid $lightgray
     width: 20%

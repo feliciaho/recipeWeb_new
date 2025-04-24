@@ -31,7 +31,7 @@ export default defineStore('paginationStore', {
       this.currentPage = page;
       const home = document.querySelector('#homeWrap');
       window.scrollTo({
-        top: home.offsetTop , // 滾動到指定元素的上方
+        top: home.offsetTop - 50, // 滾動到指定元素的上方再往下一點
         behavior: 'smooth' // 平滑滾動
       });
     },

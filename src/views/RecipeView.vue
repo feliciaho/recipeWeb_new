@@ -25,7 +25,6 @@ export default {
     },
     // 檢測是否有收藏
     isFavorite(favoriteId) {
-      console.log(favoriteId);
       return this.favoriteRecipes.some((item) => item && item.id == favoriteId);
     },
   },

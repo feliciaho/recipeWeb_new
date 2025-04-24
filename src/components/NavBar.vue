@@ -39,8 +39,7 @@ export default {
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="navbarLogo">
       <RouterLink to ="/homeView">
-        <img class="nav-link" src="../images/logo.png">
-        <h1>Felicia Ho's Recipes</h1>
+        <img src="../images/logo.png">Felicia Ho's Recipes
       </RouterLink>
     </div>
     <button class="navbar-toggler" id="toogleButton" type="button" aria-expanded="false" aria-label="Toggle navigation"

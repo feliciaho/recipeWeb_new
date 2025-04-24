@@ -20,7 +20,6 @@ export default defineStore('favoriteStore', {
       const existingRecipe = this.favoriteRecipes.find((item) => item.id == recipeAddId)
       // 如果已存在則return
       if (existingRecipe) {
-        console.log(this.isFavorite)
         return
       } else {
         // 如果不存在則從食譜列表中找到該食譜
