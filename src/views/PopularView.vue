@@ -10,7 +10,7 @@ export default {
     sortProducts() {
       //如果不解構會直接修改返回新的數組
       // 使用[...]解構,這樣可以避免修改原始數據。
-      // 返回排序後的新數組,取前10組
+      // 返回排序後的新數組,取前5組
       return [...this.recipes].sort((a, b) => b.rating - a.rating).slice(0, 5);
     },
   },

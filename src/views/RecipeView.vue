@@ -12,15 +12,22 @@ export default {
   }),
   computed: {
     ...mapState(recipeStore, ['recipes']),
+    ...mapState(favoriteStore, ['favoriteRecipes']),
   },
   methods: {
-    ...mapActions(favoriteStore, ['addFavorite', 'removeFavorite']),
     ...mapActions(recipeStore, ['fetchApi']),
+    ...mapActions(favoriteStore, ['addFavorite', 'removeFavorite']),
+
     getRecipe() {
       const recipeInfo = recipeStore();
       const recipe = recipeInfo.recipes.find((recipe) => recipe.id == this.recipeId);
       this.recipesView = recipe;
-    }
+    },
+    // 檢測是否有收藏
+    isFavorite(favoriteId) {
+      console.log(favoriteId);
+      return this.favoriteRecipes.some((item) => item && item.id == favoriteId);
+    },
   },
   async mounted() {
     // 在 mounted 中將 props 的值賦給 data
@@ -45,7 +52,13 @@ export default {
         </ul>
       </div>
       <div class="recipeBanner">
-        <img :src="recipesView.image" :alt=recipesView.name />
+        <label class="add" @click="addFavorite(recipeId)" v-if="!isFavorite(recipeId)">
+          <img src="../images/addIcon.png" alt="add to favorite" />
+        </label>
+        <label class="remove" @click="removeFavorite(recipeId)" v-if="isFavorite(recipeId)">
+          <img src="../images/removeIcon.png" alt="remove to favorite" />
+        </label>
+        <img class="recipeImg" :src="recipesView.image" :alt=recipesView.name />
       </div>
       <div class="recipeContent">
         <div class="instructionsBox">

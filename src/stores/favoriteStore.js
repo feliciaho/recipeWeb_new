@@ -15,14 +15,14 @@ export default defineStore('favoriteStore', {
     addFavorite(recipeAddId) {
       const recipeInfo = recipeStore();
       // 檢查此食譜是否已經存在於收藏中
-      const existingRecipe = this.favoriteRecipes.find((item) => item.id === recipeAddId)
+      const existingRecipe = this.favoriteRecipes.find((item) => item.id == recipeAddId)
       // 如果已存在則return
       if (existingRecipe) {
         console.log(this.isFavorite);
         return
       } else{
         // 如果不存在則從食譜列表中找到該食譜
-        const recipe = recipeInfo.recipes.find((item) => item.id === recipeAddId)
+        const recipe = recipeInfo.recipes.find((item) => item.id == recipeAddId)
         // 如果不存在則加入push食譜至favoriteRecipes
         this.favoriteRecipes.push(recipe);
         // 再將此陣列重新轉回字串存入localStorage
@@ -32,13 +32,13 @@ export default defineStore('favoriteStore', {
     removeFavorite(recipeRemoveId) {
       // const recipeInfo = recipeStore();
       // 檢查此食譜是否已經存在於收藏中
-      const existingRecipe = this.favoriteRecipes.find((item) => item.id === recipeRemoveId);
+      const existingRecipe = this.favoriteRecipes.find((item) => item.id == recipeRemoveId);
       // 如果不存在則return
       if(!existingRecipe){
         return
       // 如果存在則從收藏中刪除
       }else{
-        const index = this.favoriteRecipes.findIndex((item) => item.id === recipeRemoveId);
+        const index = this.favoriteRecipes.findIndex((item) => item.id == recipeRemoveId);
         // 將此物件從陣列中刪除
         this.favoriteRecipes.splice(index, 1);
         // 再將此陣列重新轉回字串存入localStorage

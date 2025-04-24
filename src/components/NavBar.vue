@@ -38,8 +38,10 @@ export default {
 <template>
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="navbarLogo">
-      <img class="nav-link" src="../images/logo.png">
-      <h1>Felicia Ho's Recipes</h1>
+      <RouterLink to ="/homeView">
+        <img class="nav-link" src="../images/logo.png">
+        <h1>Felicia Ho's Recipes</h1>
+      </RouterLink>
     </div>
     <button class="navbar-toggler" id="toogleButton" type="button" aria-expanded="false" aria-label="Toggle navigation"
       @click="toogleNavbar">

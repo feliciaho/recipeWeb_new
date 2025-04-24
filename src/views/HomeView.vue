@@ -41,11 +41,11 @@ export default {
 <template>
   <LoadingOverlay :active="isloading"></LoadingOverlay>
   <section class="home" id="home">
-    <h1 v-if="!nowPageStore.length">
-      Not Found
-    </h1>
     <AboutUsCom></AboutUsCom>
     <h1 id="homeWrap">Explore Recipes</h1>
+    <h3 v-if="!nowPageStore.length">
+      Not Found
+    </h3>
     <!-- 提取被search pagination過濾後的nowPageStore -->
     <div class="homeRecipsWrap">
       <div class="homeRecipes" v-for="i in nowPageStore" :key="i.id + 'recipe'">
