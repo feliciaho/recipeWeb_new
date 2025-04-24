@@ -32,6 +32,8 @@ export default defineStore('favoriteStore', {
     removeFavorite(recipeRemoveId) {
       // const recipeInfo = recipeStore();
       // 檢查此食譜是否已經存在於收藏中
+      // 注意不能用=== 要用 == 因為recipeRemoveId是字串
+      // 而this.favoriteRecipes裡的id是數字
       const existingRecipe = this.favoriteRecipes.find((item) => item.id == recipeRemoveId);
       // 如果不存在則return
       if(!existingRecipe){
