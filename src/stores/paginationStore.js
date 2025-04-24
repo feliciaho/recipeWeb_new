@@ -29,9 +29,8 @@ export default defineStore('paginationStore', {
   actions: {
     switchPage(page) {
       this.currentPage = page;
-      const home = document.querySelector('#homeWrap');
       window.scrollTo({
-        top: home.offsetTop, // 滾動到指定元素的上方再往下一點
+        top: 500, // 滾動到頁面中間
         behavior: 'smooth' // 平滑滾動
       });
     },

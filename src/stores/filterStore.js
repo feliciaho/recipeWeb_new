@@ -20,11 +20,16 @@ export default defineStore('filterStore', {
         this.filterRecipes = recipe.recipes.filter((item) =>
           item.name.toLowerCase().includes(this.searchData.toLowerCase()),);
         pagination.currentPage = 1; // 搜尋後回到第一頁
+
       }else{
       // 如果 searchData是空值則直接回傳一樣的產品列表
        this.filterRecipes = recipe.recipes;
        pagination.currentPage = 1; // 搜尋後回到第一頁
       };
+      window.scrollTo({
+        top: 1000, // 滾動到頁面中間
+        behavior: 'smooth' // 平滑滾動
+      });
     },
   },
 })
