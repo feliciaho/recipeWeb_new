@@ -62,7 +62,7 @@ export default {
       </div>
       <div class="recipeContent">
         <div class="instructionsBox">
-          <h3 class="recipeContentTitle">How To Cook?</h3>
+          <h3 class="recipeContentTitle">INSTRUCTIONS</h3>
           <ul class="instructions">
             <li v-for="item in recipesView.instructions" :key="item + 'instructions'">
               {{ item }}
