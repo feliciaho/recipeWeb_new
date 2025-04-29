@@ -22,6 +22,16 @@ export default defineStore('closeNavBarStore', {
       if (trigger) {
         // 如果傳入trigger為true 代表是從navBar來的
         filter.searchData = '' // 清空搜尋資料
+      }else{
+        setTimeout(() => {
+          const element = document.querySelector('#homeWrap') // 假設有一個 id 為 'top' 的元素
+          if (element) {
+            element.scrollIntoView({
+              behavior: 'smooth', // 平滑滾動
+              block: 'start', // 滾動到元素的頂部
+            })
+          }
+        }, 300)
       }
     },
   },

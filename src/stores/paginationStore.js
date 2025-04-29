@@ -37,7 +37,6 @@ export default defineStore('paginationStore', {
             block: 'start', // 滾動到元素的頂部
           })
         }
-        console.log('currentPage', this.currentPage)
       }, 300)
     },
   },
