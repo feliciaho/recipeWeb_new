@@ -15,13 +15,13 @@ export default {
     <div class="pageNavigation">
         <ul class="pagination">
           <li class="page-item" :class="{'disabled': currentPage === 1 || totalPage === 0 }">
-            <a @click.prevent="switchPage(currentPage-1)">Previous</a>
+            <a href="#" @click.prevent="switchPage(currentPage-1)">Previous</a>
           </li>
           <li class="page-item" v-for="(page , key) in totalPage" :key="'page'+ key" :class= "{'active': currentPage === page }" >
-            <a @click.prevent="switchPage(page)">{{ page }}</a>
+            <a href="#" @click.prevent="switchPage(page)">{{ page }}</a>
           </li>
           <li class="page-item" :class="{'disabled': currentPage === totalPage || totalPage === 0}">
-            <a @click.prevent="switchPage(currentPage+1)">Next</a>
+            <a href="#" @click.prevent="switchPage(currentPage+1)">Next</a>
           </li>
         </ul>
       </div>
