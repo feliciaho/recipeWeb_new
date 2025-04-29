@@ -29,10 +29,13 @@ export default defineStore('paginationStore', {
   actions: {
     switchPage(page) {
       this.currentPage = page;
-      window.scrollTo({
-        top: 0, // 滾動到頁面最頂
-        behavior: 'smooth' // 平滑滾動
+      const element = document.querySelector('#homeWrap'); // 假設有一個 id 為 'top' 的元素
+      if (element) {
+      element.scrollIntoView({
+        behavior: 'smooth', // 平滑滾動
+        block: 'start', // 滾動到元素的頂部
       });
+      }
       console.log('currentPage', this.currentPage);
     },
   },
