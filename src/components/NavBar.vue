@@ -2,15 +2,18 @@
 import SearchCom from '@/components/SearchCom.vue';
 import { mapActions, mapState } from 'pinia';
 import recipeStore from '@/stores/recipeStore';
-import { Collapse } from 'bootstrap';
+import filterStore from '@/stores/filterStore';
+import closeNavBarStore from '@/stores/closeNavBarStore';
 
 export default {
   components: { SearchCom },
   computed: {
     ...mapState(recipeStore, ['recipes']),
+    ...mapState(filterStore, ['searchData']),
   },
   methods: {
     ...mapActions(recipeStore, ['fetchApi']),
+    ...mapActions(closeNavBarStore, ['closeNavbar']),
     toogleNavbar() {
       // 手動切換navbar-collapse的顯示狀態
       // 由於增加router後navBar無法正開合
@@ -21,16 +24,6 @@ export default {
         navbarCollapse.classList.add('show');
       }
     },
-    // 路由影響collapse 無法正常關閉
-    closeNavbar() {
-      //由於router 會導致navbar-collapse無法正常關閉
-      //所以這裡使用bootstrap 5.0 的 collapse API 來手動關閉
-      const navbarCollapse = document.querySelector('#navbarNavDropdown');
-      if (navbarCollapse) {
-        const bsCollapse = Collapse.getInstance(navbarCollapse) || new Collapse(navbarCollapse);
-        bsCollapse.hide(); // 使用 Bootstrap 的 API 隱藏
-      };
-    },
   },
 };
 </script>
@@ -38,7 +31,7 @@ export default {
 <template>
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="navbarLogo">
-      <RouterLink to ="/homeView">
+      <RouterLink to="/homeView">
         <img src="../images/logo.png">Felicia Ho's Recipes
       </RouterLink>
     </div>
@@ -49,18 +42,18 @@ export default {
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <RouterLink class="nav-link" to="/homeView" @click="closeNavbar">
+          <RouterLink class="nav-link" to="/homeView" @click="closeNavbar(true)">
             <img src="../images/home.png" width="25px">Home
           </RouterLink>
         </li>
         <li class="nav-item">
-          <RouterLink class="nav-link" to="/popularView" @click="closeNavbar">
+          <RouterLink class="nav-link" to="/popularView" @click="closeNavbar(true)">
             <img src="../images/fire.png" width="25px">Popular Recipes
           </RouterLink>
         </li>
         <li class="nav-item">
-          <RouterLink class="nav-link" to="/myFavoriteView" @click="closeNavbar">
-            <img src="../images/addIcon.png" width="25px">My Favorites
+          <RouterLink class="nav-link" to="/myFavoriteView" @click="closeNavbar(true)">
+            <img src="../images/removeIcon.png" width="25px">My Favorites
           </RouterLink>
         </li>
       </ul>

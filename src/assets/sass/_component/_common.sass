@@ -113,7 +113,7 @@ body
         z-index: 4
         img
           margin-top: -6px
-      &.add
+      &.remove
         border: 1.5px solid $white
         background-color: $mainColor1
         color: $white
@@ -129,7 +129,7 @@ body
           cursor: pointer
           img
             filter: unset
-      &.remove
+      &.add
         border: 1.5px solid $white
         background-color: #c0b0ae
         position: absolute
@@ -137,6 +137,8 @@ body
         right: .5rem
         z-index: 6
         height: 38px
+        img
+          filter: invert(1)
         &:hover, &.active
           color: $white
           border: 1.5px solid $white
@@ -145,6 +147,7 @@ body
           cursor: pointer
           img
             filter: invert(1)
+            opacity: 1
       &.tag
         background-color: $mainColor1
         color: $white

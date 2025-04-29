@@ -30,9 +30,10 @@ export default defineStore('paginationStore', {
     switchPage(page) {
       this.currentPage = page;
       window.scrollTo({
-        top: 500, // 滾動到頁面中間
+        top: 0, // 滾動到頁面最頂
         behavior: 'smooth' // 平滑滾動
       });
+      console.log('currentPage', this.currentPage);
     },
   },
 })

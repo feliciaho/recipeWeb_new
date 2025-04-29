@@ -4,7 +4,7 @@ import paginationStore from '@/stores/paginationStore';
 
 export default {
     computed: {
-        ...mapState(paginationStore, ['currentPage', 'totalPage'])
+        ...mapState(paginationStore, ['currentPage', 'totalPage', 'nowPageStore'])
     },
     methods: {
         ...mapActions(paginationStore, ['switchPage'])

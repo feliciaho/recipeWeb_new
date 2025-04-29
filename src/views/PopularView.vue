@@ -52,7 +52,7 @@ export default {
           <img :src="i.image">
         </RouterLink>
         <div class="mask">
-          <label class="seemore">see more</label>
+          <label class="seemore">See more</label>
         </div>
       </div>
       <!-- text -->

@@ -244,7 +244,8 @@ section.popularRecipe .popularBanner:before {
 }
 section.popularRecipe .popularRecipes {
   position: relative;
-  height: 30vh;
+  height: 32vh;
+  max-height: 400px;
   max-width: 1500px;
   width: 80%;
   margin: 1rem 0;
@@ -314,83 +315,94 @@ section.popularRecipe .popularRecipes p.ingredients {
   -webkit-box-orient: vertical;
 }
 
-section.recipePage {
+section.recipeView .recipeViewWrap {
   max-width: 1500px;
   width: 80%;
-}
-section.recipePage .tag {
-  display: inline-block;
-  background: #f2623e;
-  color: white;
-  padding: 0.3rem 1rem;
-  border-radius: 999px;
-  font-size: 0.8rem;
-  font-weight: bold;
-}
-section.recipePage h1 {
-  margin-top: 1rem;
-  font-size: 2.5rem;
-  color: #1c1c1c;
-  font-weight: 800;
-}
-section.recipePage .description {
-  margin-top: 1rem;
-  color: #5a5a5a;
-  line-height: 1.6;
-}
-section.recipePage .info {
+  border-radius: 20px;
+  border: 2px solid #c3beb6;
+  padding: 2rem 5rem;
+  margin: 2rem;
   display: flex;
-  gap: 1.5rem;
-  margin: 1.5rem 0;
-  list-style: none;
-  padding: 0;
-  font-size: 0.9rem;
+  flex-direction: column;
+  justify-content: center;
 }
-section.recipePage .info li {
+@media only screen and (max-width: 767px) {
+  section.recipeView .recipeViewWrap {
+    padding: 1.5rem 1.5rem;
+  }
+}
+section.recipeView .recipeDetails {
   display: flex;
+  justify-content: center;
   align-items: center;
-  gap: 0.4rem;
-  font-weight: 500;
-  color: #444;
+  flex-wrap: wrap;
+  gap: 1rem;
+  list-style: none;
 }
-section.recipePage .info li i {
-  font-size: 1rem;
+@media only screen and (max-width: 767px) {
+  section.recipeView .recipeDetails {
+    gap: 0.5rem;
+  }
 }
-section.recipePage .recipeImage {
-  margin: 1rem 0;
+section.recipeView .recipeBanner {
+  position: relative;
+  margin: 2rem 0rem;
 }
-section.recipePage .recipeImage img {
+@media only screen and (max-width: 767px) {
+  section.recipeView .recipeBanner {
+    margin: 1rem 0rem;
+  }
+}
+section.recipeView .recipeBanner .recipeImg {
   width: 100%;
-  border-radius: 12px;
+  border-radius: 20px;
+  max-height: 600px;
   -o-object-fit: cover;
      object-fit: cover;
 }
-section.recipePage .recipeContent {
+section.recipeView .recipeContent {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  justify-content: center;
   gap: 2rem;
+  width: 100%;
 }
-section.recipePage .recipeContent .story {
-  color: #444;
-  font-size: 1rem;
-  line-height: 1.8;
+@media only screen and (max-width: 992px) {
+  section.recipeView .recipeContent {
+    flex-direction: column;
+    gap: 1rem;
+  }
 }
-section.recipePage .recipeContent .ingredientsBox {
-  background: #fff6f3;
+section.recipeView .recipeContent .instructionsBox {
+  width: 100%;
+}
+section.recipeView .recipeContent .instructionsBox .instructions {
+  width: calc(70% - 2rem);
+  list-style: disc;
+  padding-left: 1rem;
+}
+@media only screen and (max-width: 992px) {
+  section.recipeView .recipeContent .instructionsBox .instructions {
+    width: 100%;
+    min-width: unset;
+  }
+}
+section.recipeView .recipeContent .ingredientsBox {
+  background: #fffbf2;
   padding: 1.5rem;
-  border-radius: 12px;
+  border-radius: 20px;
+  min-width: 300px;
+  width: 30%;
 }
-section.recipePage .recipeContent .ingredientsBox h3 {
-  color: #f2623e;
-  margin-bottom: 1rem;
-  text-transform: uppercase;
-  font-size: 1.1rem;
+@media only screen and (max-width: 992px) {
+  section.recipeView .recipeContent .ingredientsBox {
+    width: 100%;
+    min-width: unset;
+  }
 }
-section.recipePage .recipeContent .ingredientsBox .ingredients {
-  padding-left: 1.2rem;
-}
-section.recipePage .recipeContent .ingredientsBox .ingredients li {
-  line-height: 1.6;
+section.recipeView .recipeContent .ingridients {
+  list-style: disc;
+  padding-left: 1rem;
 }
 
 body {
@@ -417,11 +429,20 @@ body section {
   overflow-x: hidden;
   padding: 10vh 0 5vh 0;
 }
+@media only screen and (max-width: 992px) {
+  body section {
+    padding: 12vh 0 5vh 0;
+  }
+}
 body section h1 {
   z-index: 2;
   font-size: clamp(2rem, 3vw, 4rem);
-  margin: 1%;
+  margin: 2%;
   color: #f5715f;
+  letter-spacing: 0.1rem;
+}
+body section h1.recipeTitle {
+  margin: 1% 2% 1% 2%;
 }
 body section h2 {
   font-size: clamp(1.8rem, 1.8vw, 3rem);
@@ -438,6 +459,13 @@ body section h3 {
 }
 body section h3.popularTitle {
   color: #ffffff;
+}
+body section h3.recipeContentTitle {
+  color: #f5715f;
+  font-size: clamp(1.2rem, 1.5vw, 2.5rem);
+  margin: unset;
+  text-align: start;
+  font-weight: 1000;
 }
 body section .secText {
   width: 100%;
@@ -458,29 +486,35 @@ body section .skillWrap {
 }
 body section span {
   border: unset;
-  border-left: 2px solid #f5715f;
+  border-left: 1.5px solid #f5715f;
   font-size: clamp(1rem, 1vw, 2rem);
-  padding: 0.1rem 0.5rem;
+  padding: 0rem 0.5rem;
   margin: 0.5rem;
 }
-body section p {
+body section p, body section li {
   font-size: clamp(1rem, 1vw, 2rem);
   text-align: start;
   color: #484848;
   margin: 0.2rem;
+  line-height: 1.5;
 }
-body section .labelWrap {
-  display: flex;
-  justify-content: flex-start;
-  flex-wrap: wrap;
-  gap: 0.5rem 0.3rem;
+body section p img, body section li img {
+  margin: 0 0.5rem;
+  margin-top: -1.5px;
+  width: 1rem;
+}
+body section .dot {
+  width: 0.3rem;
+  height: 0.3rem;
+  background-color: #302b2b;
+  border-radius: 50%;
 }
 body section label {
   text-align: center;
   color: #484848;
   padding: 0.3rem 0.6rem;
   font-size: clamp(1rem, 1vw, 2rem);
-  border: 2px solid #808285;
+  border: 1.5px solid #808285;
   border-radius: 20px;
   background-color: #ffffff;
   margin: 0.3rem 0;
@@ -489,49 +523,66 @@ body section label {
 }
 body section label img {
   margin: 0 0.1rem;
-  margin-top: -2px;
-  width: 1rem;
+  width: 1.3rem;
 }
 body section label.seemore {
-  border: 2px solid #f5715f;
+  border: 1.5px solid #f5715f;
   background-color: #f5715f;
   color: #302b2b;
 }
 body section label.rating {
-  border: 2px solid #fff2dd;
+  border: 1.5px solid #fff2dd;
   background-color: #ffe1b3;
   position: absolute;
   top: 0.5rem;
-  right: 0.5rem;
+  left: 0.5rem;
   z-index: 4;
 }
-body section label.add {
-  border: 2px solid #f5715f;
+body section label.rating img {
+  margin-top: -6px;
+}
+body section label.remove {
+  border: 1.5px solid #ffffff;
   background-color: #f5715f;
   color: #ffffff;
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  height: 38px;
+  z-index: 6;
+}
+body section label.remove img {
+  filter: invert(1);
+}
+body section label.remove:hover, body section label.remove.active {
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+}
+body section label.remove:hover img, body section label.remove.active img {
+  filter: unset;
+}
+body section label.add {
+  border: 1.5px solid #ffffff;
+  background-color: #c0b0ae;
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  z-index: 6;
+  height: 38px;
 }
 body section label.add img {
   filter: invert(1);
 }
 body section label.add:hover, body section label.add.active {
-  border: 2px solid #302b2b;
-  background-color: #302b2b;
-  transition: all 0.3s ease-in-out;
-  cursor: pointer;
-}
-body section label.remove {
-  border: 2px solid #ffffff;
-  background-color: #c0b0ae;
-}
-body section label.remove:hover, body section label.remove.active {
   color: #ffffff;
-  border: 2px solid #302b2b;
+  border: 1.5px solid #ffffff;
   background-color: #302b2b;
   transition: all 0.3s ease-in-out;
   cursor: pointer;
 }
-body section label.remove:hover img, body section label.remove.active img {
+body section label.add:hover img, body section label.add.active img {
   filter: invert(1);
+  opacity: 1;
 }
 body section label.tag {
   background-color: #f5715f;
@@ -539,6 +590,11 @@ body section label.tag {
   padding: 0.3rem 0.8rem;
   display: inline-block;
   border: unset;
+}
+body section label.recipe {
+  border: 1.5px solid #f5715f;
+  background-color: #f5715f;
+  color: #ffffff;
 }
 
 .navbar {
@@ -557,9 +613,10 @@ body section label.tag {
 }
 .navbar .navbarLogo {
   position: absolute;
-  display: ruby;
+  display: inline-block;
   top: 2rem;
   left: 1rem;
+  font-size: clamp(1.2rem, 1.4vw, 2rem);
 }
 @media only screen and (max-width: 992px) {
   .navbar .navbarLogo {
@@ -567,13 +624,14 @@ body section label.tag {
     left: 0.5rem;
   }
 }
-.navbar .navbarLogo img {
-  width: 35px;
-}
-.navbar .navbarLogo h1 {
+.navbar .navbarLogo a {
   color: #f5715f;
-  font-size: clamp(1.2rem, 1.4vw, 2rem);
-  padding: 0 0.5rem;
+  display: flex;
+  align-items: center;
+}
+.navbar .navbarLogo a img {
+  margin: 0 0.5rem;
+  width: 35px;
 }
 .navbar .searchWrap {
   border: 2px solid #d5d5d6;
@@ -657,14 +715,14 @@ body section label.tag {
   width: 80%;
   border-radius: 20px;
   border: 2px solid #c3beb6;
-  padding: 2rem;
+  padding: 2rem 2rem;
   text-align: start;
-  margin-bottom: 6rem;
+  margin-bottom: 5rem;
 }
 @media only screen and (max-width: 1100px) {
   .aboutUsWrap {
-    max-height: 100vh;
-    padding: 1rem;
+    max-height: unset;
+    padding: 1rem 1rem;
     margin-bottom: 2rem;
   }
 }
